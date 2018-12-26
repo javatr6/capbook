@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.UniqueConstraint;
 
 
 
@@ -48,7 +50,7 @@ public class UserProfile {
 	
 	@OneToMany(mappedBy="user",targetEntity=Chat.class,cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Chat> chat;
-	
+	@Column(unique=true)
 	private String email;
 	private Boolean isPrivateEmail;
 	

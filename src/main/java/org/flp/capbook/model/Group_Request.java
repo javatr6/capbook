@@ -12,11 +12,11 @@ public class Group_Request {
 	private Integer g_requestId;
 	private Integer groupId;
 	private Integer userId;
-	private boolean status;
+	private String status="Pending";
 	public Group_Request() {
 		super();
 	}
-	public Group_Request(Integer g_requestId, Integer groupId, Integer userId, boolean status) {
+	public Group_Request(Integer g_requestId, Integer groupId, Integer userId, String status) {
 		super();
 		this.g_requestId = g_requestId;
 		this.groupId = groupId;
@@ -41,10 +41,10 @@ public class Group_Request {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public boolean isStatus() {
+	public String isStatus() {
 		return status;
 	}
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	@Override
