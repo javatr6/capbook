@@ -4,14 +4,14 @@ package org.flp.capbook.controller;
 import java.util.List;
 
 import org.flp.capbook.dao.IGroupsDao;
-import org.flp.capbook.dao.IRequestDao;
+import org.flp.capbook.dao.IGroupRequestDao;
 import org.flp.capbook.model.FriendsList;
 import org.flp.capbook.model.Group_Request;
 import org.flp.capbook.model.Group_Topic;
 import org.flp.capbook.model.Groups;
 import org.flp.capbook.service.IGroupNameService;
 import org.flp.capbook.service.IGroupsService;
-import org.flp.capbook.service.IRequestService;
+import org.flp.capbook.service.IGroupRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ public class GroupsController {
 	@Autowired
 	private IGroupsService groupService;
 	@Autowired
-	private IRequestService requestService;
+	private IGroupRequestService requestService;
 	@Autowired
 	private IGroupNameService groupNameService;
 	
@@ -43,7 +43,7 @@ public class GroupsController {
 	private IGroupsDao groupsDao;
 	
 	@Autowired
-	private IRequestDao requestDao;
+	private IGroupRequestDao requestDao;
 	
 	@GetMapping("/groupadmin/{input}")
 	public ResponseEntity<List<Groups>> findGroups(@PathVariable("input") Integer input){

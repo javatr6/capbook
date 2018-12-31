@@ -14,5 +14,9 @@ public interface IUserDao extends JpaRepository<UserProfile, Integer>{
 
 	@Query("from UserProfile u where u.email= :email")
 	UserProfile searchUser(@Param("email") String email);
+	
+	@Query("from UserProfile u where u.userName=:uName")
+	UserProfile findByName(@Param("uName")String uName);
+
 
 }
