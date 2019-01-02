@@ -19,22 +19,24 @@ public class Images {
 	private String imageUrl;                                                                                        
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	private UserProfile user;
+	private Integer userId;
 	private String albumName;
 	@Transient                                                                                                      
 	private File file;
 	public Images() {
 		
 	}
-	public Images(Integer imageId, String postDisc, String imageUrl, UserProfile user, String albumName, File file) {
+	
+	public Images(Integer imageId, String postDisc, String imageUrl, Integer userId, String albumName, File file) {
 		super();
 		this.imageId = imageId;
 		this.postDisc = postDisc;
 		this.imageUrl = imageUrl;
-		this.user = user;
+		this.userId = userId;
 		this.albumName = albumName;
 		this.file = file;
 	}
+
 	public Integer getImageId() {
 		return imageId;
 	}
@@ -53,12 +55,15 @@ public class Images {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	public UserProfile getUser() {
-		return user;
+	
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setUser(UserProfile user) {
-		this.user = user;
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
+
 	public String getAlbumName() {
 		return albumName;
 	}
@@ -71,10 +76,12 @@ public class Images {
 	public void setFile(File file) {
 		this.file = file;
 	}
+
 	@Override
 	public String toString() {
-		return "Images [imageId=" + imageId + ", postDisc=" + postDisc + ", imageUrl=" + imageUrl + ", user=" + user
+		return "Images [imageId=" + imageId + ", postDisc=" + postDisc + ", imageUrl=" + imageUrl + ", userId=" + userId
 				+ ", albumName=" + albumName + ", file=" + file + "]";
 	}
+	
 		               
 }

@@ -22,14 +22,15 @@ public class Address {
 	private String country;
 	@OneToOne
 	@JoinColumn(name="userfk")
-	private UserProfile user;
+	private Integer userId;
 	
 	public Address() {
 		
 	}
 
+	
 	public Address(Integer addressId, String doorNumber, String street, String locality, String city, String state,
-			String pinCode, String country, UserProfile user) {
+			String pinCode, String country, Integer userId) {
 		super();
 		this.addressId = addressId;
 		this.doorNumber = doorNumber;
@@ -39,8 +40,9 @@ public class Address {
 		this.state = state;
 		this.pinCode = pinCode;
 		this.country = country;
-		this.user = user;
+		this.userId = userId;
 	}
+
 
 	public Integer getAddressId() {
 		return addressId;
@@ -106,24 +108,22 @@ public class Address {
 		this.country = country;
 	}
 
-	public UserProfile getUser() {
-		return user;
+
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUser(UserProfile user) {
-		this.user = user;
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
+
 
 	@Override
 	public String toString() {
 		return "Address [addressId=" + addressId + ", doorNumber=" + doorNumber + ", street=" + street + ", locality="
 				+ locality + ", city=" + city + ", state=" + state + ", pinCode=" + pinCode + ", country=" + country
-				+ ", user=" + user + "]";
+				+ ", userId=" + userId + "]";
 	}
-	
-	
-
-
-
 
 }
