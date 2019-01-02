@@ -168,6 +168,12 @@ public class CapBookServiceImpl implements ICapBookService{
 		return null;
 	}
 
+	@Override
+	public UserProfile getUserDetails(String userName) {
+		UserProfile user=  userProfile.findByName(userName);
+		return user;
+	}
+
 
 
 

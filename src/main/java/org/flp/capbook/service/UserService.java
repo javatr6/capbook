@@ -12,10 +12,14 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private IUserDao userDao;
-	
+
 	@Override
 	public UserProfile getUserDetails(String email) {
 		return (UserProfile) userDao.searchUser(email);
 	}
 
+	@Override
+	public List<UserProfile> searchFriend(String input) {
+		return userDao.searchFriend(input);
+	}
 }

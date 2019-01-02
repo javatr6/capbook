@@ -45,4 +45,6 @@ public interface ICapBookService {
 /*	public Integer saveNewPasswd(String mail,String Op, String Np);*/
 	
 	public Integer saveLgnPasswd(String Password,String email);
+
+	UserProfile getUserDetails(String userName);
 }

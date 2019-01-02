@@ -25,7 +25,18 @@ public class ProfileController {
 	@Autowired
 	private ICapBookService friendservice;
 	
-	
+	@GetMapping(value="/profile/{userName}")
+	ResponseEntity<UserProfile> getProfile(@PathVariable("userName")String userName){
+		System.out.println("in Controller ");
+		UserProfile prfl= friendservice.getUserDetails(userName);
+		if(prfl==null)
+		{
+			return new ResponseEntity("Sorry! unable to add friends", 
+					HttpStatus.NOT_FOUND); 
+		}
+
+		return new ResponseEntity<UserProfile>(prfl, HttpStatus.OK);
+	}
 	
 	@PostMapping(value="/profile")
 	ResponseEntity<List<UserProfile>> saveProfile(@RequestBody UserProfile profile){

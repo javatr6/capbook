@@ -7,5 +7,5 @@ import org.flp.capbook.model.UserProfile;
 public interface IUserService {
 
 	UserProfile getUserDetails(String email);
-
+	List<UserProfile> searchFriend(String input);
 }
