@@ -23,6 +23,11 @@ public class Groups {
 	@ManyToMany
 	@JoinTable(name="event_delegate",joinColumns= {@JoinColumn(name="groups")},inverseJoinColumns= {@JoinColumn(name="user")})
 	private List<UserProfile> user;
+	
+
+	public Groups() {
+		super();
+	}
 
 	public Groups(Integer groupId, String groupName, String groupAdmin, String description, List<UserProfile> user) {
 		super();
