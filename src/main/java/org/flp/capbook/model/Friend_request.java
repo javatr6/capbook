@@ -1,13 +1,15 @@
 package org.flp.capbook.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Friend_request {
 	
 	@Id
-	private Integer friendId;
+	@GeneratedValue
+	private Integer requestId;
 	private Integer senderId;
 	private Integer receiverId;
 	private String status="pending";
@@ -18,23 +20,27 @@ public class Friend_request {
 	}
 
 
-	public Friend_request(Integer friendId, Integer senderId, Integer receiverId, String status) {
+
+	public Friend_request(Integer requestId, Integer senderId, Integer receiverId, String status) {
 		super();
-		this.friendId = friendId;
+		this.requestId = requestId;
 		this.senderId = senderId;
 		this.receiverId = receiverId;
 		this.status = status;
 	}
 
 
-	public Integer getFriendId() {
-		return friendId;
+
+	public Integer getRequestId() {
+		return requestId;
 	}
 
 
-	public void setFriendId(Integer friendId) {
-		this.friendId = friendId;
+
+	public void setRequestId(Integer requestId) {
+		this.requestId = requestId;
 	}
+
 
 
 	public Integer getSenderId() {
@@ -67,12 +73,12 @@ public class Friend_request {
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "Friend_request [friendId=" + friendId + ", senderId=" + senderId + ", receiverId=" + receiverId
+		return "Friend_request [requestId=" + requestId + ", senderId=" + senderId + ", receiverId=" + receiverId
 				+ ", status=" + status + "]";
 	}
 
-	
 
 }

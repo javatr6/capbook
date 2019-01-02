@@ -18,5 +18,6 @@ public interface IUserDao extends JpaRepository<UserProfile, Integer>{
 	@Query("from UserProfile u where u.userName=:uName")
 	UserProfile findByName(@Param("uName")String uName);
 
-
+	@Query("select u.email from UserProfile u where u.userId=:userId")
+	public String getMail(@Param("userId") Integer userId);
 }
