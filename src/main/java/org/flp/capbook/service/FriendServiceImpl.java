@@ -18,12 +18,21 @@ public class FriendServiceImpl implements IFriendService{
 	IFriendDao friendDao;
 
 	@Override
-	public List<Friend_request> addFriend(Friend_request friend) {
+	public Friend_request addFriend(Friend_request friend) {
 		System.out.println("friend service");
 		friendDao.save(friend);
 		
-		return friendDao.findAll();
+		return friendDao.getOne(friend.getRequestId());
 	}
+
+	@Override
+	public Friend_request deleteRequest(Integer requestId) {
+		
+		friendDao.deleteById(requestId);
+		
+		return null;
+		 
+	} 
 	
 	
 

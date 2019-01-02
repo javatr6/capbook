@@ -10,8 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.flp.capbook.dao.IProfileDao;
+import org.flp.capbook.dao.IStatusDao;
 import org.flp.capbook.dao.IUserDao;
+import org.flp.capbook.dao.IUserProfileDao;
 import org.flp.capbook.model.Images;
+import org.flp.capbook.model.Status;
+import org.flp.capbook.model.UserProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +38,12 @@ public class StorageService {
 	private IProfileDao profiledao;
 
 	@Autowired
-	private IUserDao userdao;
+	private IUserProfileDao userProfileDao;
+	
+	
+	
+	@Autowired
+	private IStatusDao statusDao;
 
 	public void store(MultipartFile files[],String location,Integer userId) {
 
@@ -127,4 +136,39 @@ public class StorageService {
 		}
 		return files1;
 	}
+	public void store(Status status,Integer userId) {
+		
+		try {
+			
+			UserProfile user=userProfileDao.find(userId);
+			if(user==null) {
+				System.out.println("Im null");
+			}else {
+				status.setUserName(user.getUserName());
+				status.setUser(user);
+				statusDao.save(status);}  
+			} catch (Exception e) {
+				System.out.println(e.getMessage()  );
+				
+			}
+		}
+		
+		public boolean deleteStatus(Integer status_id) {
+			
+			Status s=statusDao.findStatus(status_id);	
+			
+			statusDao.delete(s);
+			return true;
+			
+		}
+	 
+		
+	 
+		
+
+		public List<Status> getStatus(Integer userId) {
+			
+			return statusDao.getStatus(userId);
+		}
+
 }

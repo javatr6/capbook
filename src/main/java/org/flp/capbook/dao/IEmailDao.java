@@ -14,7 +14,8 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public interface IEmailDao extends JpaRepository<Email, Integer> {
 	
-	
+	@Query("select e from Email e where e.toAddress =:emailId")
+	public List<Email> getAllEmailsOfUser(@Param("emailId") String  emailId);
 
 
 }

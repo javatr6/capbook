@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
 @Service("requestService")
 public class RequestService implements IRequestService{
 
@@ -28,6 +27,13 @@ public class RequestService implements IRequestService{
 	public List<Group_Request> findRequest() {
 		List<Group_Request> list =requestDao.findAll();
 		return list;
+	}
+
+	@Override
+	public List<Group_Request> getRequestIdAndDelete(Integer userId) {
+		Integer groupReqId = requestDao.getRequestId(userId);
+		requestDao.deleteById(groupReqId);
+		return requestDao.findAll();
 	}
 
 }

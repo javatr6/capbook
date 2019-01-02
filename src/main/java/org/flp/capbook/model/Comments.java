@@ -1,14 +1,15 @@
 package org.flp.capbook.model;
-
-import java.sql.Date;
-import java.time.LocalDate;
-
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyIntializer"})
 public class Comments {
 	@Id
 	@GeneratedValue
@@ -16,12 +17,14 @@ public class Comments {
 	private String commentText;
 	private Integer postedBy;
 	private Integer postedTo;
-	private Date dateOfPosting=Date.valueOf(LocalDate.now());
+	private LocalDateTime dateOfPosting=LocalDateTime.now();
 	//private Integer statusId;
 	private Integer likeCount;
 	private Integer dislikeCount;
 	@ManyToOne
-	@JoinColumn(name="statusfk")
+	@JoinColumn(name="status_id")
+	@JsonIgnoreProperties("comments")
+	//@JsonBackReference
 	private Status status;
 	
 	
@@ -61,7 +64,7 @@ public class Comments {
 	}
 	
 
-	public Comments(Integer commentId, String commentText, Integer postedBy, Integer postedTo, Date dateOfPosting,
+	public Comments(Integer commentId, String commentText, Integer postedBy, Integer postedTo, LocalDateTime dateOfPosting,
 			Integer likeCount, Integer dislikeCount, Status status) {
 		super();
 		this.commentId = commentId;
@@ -103,11 +106,11 @@ public class Comments {
 	}
 
 	
-	public Date getDateOfPosting() {
+	public LocalDateTime getDateOfPosting() {
 		return dateOfPosting;
 	}
 
-	public void setDateOfPosting(Date dateOfPosting) {
+	public void setDateOfPosting(LocalDateTime dateOfPosting) {
 		this.dateOfPosting = dateOfPosting;
 	}
 

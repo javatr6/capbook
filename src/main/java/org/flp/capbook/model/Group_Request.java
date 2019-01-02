@@ -1,9 +1,9 @@
 package org.flp.capbook.model;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Group_Request {
@@ -12,7 +12,9 @@ public class Group_Request {
 	private Integer g_requestId;
 	private Integer groupId;
 	private Integer userId;
-	private String status="Pending";
+	@Transient
+	private String userName;
+	private String status="pending";
 	public Group_Request() {
 		super();
 	}
@@ -22,6 +24,16 @@ public class Group_Request {
 		this.groupId = groupId;
 		this.userId = userId;
 		this.status = status;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getStatus() {
+		return status;
 	}
 	public Integer getG_requestId() {
 		return g_requestId;

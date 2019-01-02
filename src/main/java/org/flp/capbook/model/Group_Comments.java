@@ -1,5 +1,6 @@
-package org.flp.capbook.model;
 
+package org.flp.capbook.model;
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -14,23 +15,20 @@ public class Group_Comments {
 	@Id
 	@GeneratedValue
 	private Integer groupCommentId;
-	@ManyToOne
-	@JoinColumn(name="PostFk")
-	private Group_Post postId;
+	
 	@ManyToOne
 	@JoinColumn(name="TopicFk")
 	private Group_Topic topicId;
 	private String commentText;
-	private LocalDate postedDate;
-	private Integer commented_by;
+	private LocalDate postedDate=LocalDate.now();
+	private String commented_by;
 	public Group_Comments() {
 		super();
 	}
-	public Group_Comments(Integer groupCommentId, Group_Post postId, Group_Topic topicId, String commentText,
-			LocalDate postedDate, Integer commented_by) {
+	public Group_Comments(Integer groupCommentId, Group_Topic topicId, String commentText, LocalDate postedDate,
+			String commented_by) {
 		super();
 		this.groupCommentId = groupCommentId;
-		this.postId = postId;
 		this.topicId = topicId;
 		this.commentText = commentText;
 		this.postedDate = postedDate;
@@ -41,12 +39,6 @@ public class Group_Comments {
 	}
 	public void setGroupCommentId(Integer groupCommentId) {
 		this.groupCommentId = groupCommentId;
-	}
-	public Group_Post getPostId() {
-		return postId;
-	}
-	public void setPostId(Group_Post postId) {
-		this.postId = postId;
 	}
 	public Group_Topic getTopicId() {
 		return topicId;
@@ -66,18 +58,18 @@ public class Group_Comments {
 	public void setPostedDate(LocalDate postedDate) {
 		this.postedDate = postedDate;
 	}
-	public Integer getCommented_by() {
+	public String getCommented_by() {
 		return commented_by;
 	}
-	public void setCommented_by(Integer commented_by) {
+	public void setCommented_by(String commented_by) {
 		this.commented_by = commented_by;
 	}
 	@Override
 	public String toString() {
-		return "Group_Comments [groupCommentId=" + groupCommentId + ", postId=" + postId + ", topicId=" + topicId
-				+ ", commentText=" + commentText + ", postedDate=" + postedDate + ", commented_by=" + commented_by
-				+ "]";
+		return "Group_Comments [groupCommentId=" + groupCommentId + ", topicId=" + topicId + ", commentText="
+				+ commentText + ", postedDate=" + postedDate + ", commented_by=" + commented_by + "]";
 	}
+	
 	
 	
 

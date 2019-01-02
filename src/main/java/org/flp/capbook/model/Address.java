@@ -20,8 +20,7 @@ public class Address {
 	private String state;
 	private String pinCode;
 	private String country;
-	@OneToOne
-	@JoinColumn(name="userfk")
+	
 	private Integer userId;
 	
 	public Address() {

@@ -5,7 +5,11 @@ import java.util.List;
 import org.flp.capbook.model.Groups;
 import org.flp.capbook.model.UserProfile;
 
-public interface IGroupSearchService {
+
+
+
+
+public interface ISearchService {
 	
 	public List<String> getGroupNames(String letter);
 

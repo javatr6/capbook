@@ -29,7 +29,7 @@ public class UserProfile {
 	private Address address;
 	private Date dob;
 	
-	@OneToMany(mappedBy="user",targetEntity=Images.class,cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="userId",targetEntity=Images.class,cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Images> images=new ArrayList<Images>();
 	private String gender;
 	private Long mobileNo;

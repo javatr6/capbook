@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.flp.capbook.model.Groups;
 import org.flp.capbook.model.UserProfile;
-import org.flp.capbook.service.IGroupSearchService;
+import org.flp.capbook.service.ISearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SearchController {
 	
 	@Autowired
-	private IGroupSearchService searchService;
+	private ISearchService searchService;
 	
 	
 	

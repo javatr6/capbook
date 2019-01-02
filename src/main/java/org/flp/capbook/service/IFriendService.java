@@ -8,7 +8,9 @@ import org.flp.capbook.model.Friend_request;
 
 public interface IFriendService {
 
-	List<Friend_request> addFriend(Friend_request friend);
+	Friend_request addFriend(Friend_request friend);
+
+	Friend_request deleteRequest(Integer requestId);
 
 	
 	

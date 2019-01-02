@@ -17,8 +17,7 @@ public class Images {
 	private Integer imageId;                                                                                        
 	private String postDisc;                                                                                        
 	private String imageUrl;                                                                                        
-	@ManyToOne
-	@JoinColumn(name="user_id")
+	
 	private Integer userId;
 	private String albumName;
 	@Transient                                                                                                      
