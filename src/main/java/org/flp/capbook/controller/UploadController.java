@@ -81,5 +81,15 @@ public class UploadController {
 				.body(file);
 	}
 	
-	
+	@GetMapping("/albums/{userId}")
+	public ResponseEntity<List<String>> getAlbumNames(@PathVariable("userId") Integer userId){
+		List<String> albumNames=profileService.getAllAlbumNames(userId);
+		if(albumNames!=null) {
+			return ResponseEntity.ok().body(albumNames);
+
+		}
+		return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(albumNames);
+
+		
+	}
 }

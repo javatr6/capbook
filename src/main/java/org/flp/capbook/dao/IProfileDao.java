@@ -25,6 +25,9 @@ public interface IProfileDao extends JpaRepository<Images, Integer> {
 	@Query("select max(i.imageId) from Images i where  i.userId = :id ")
 	Integer getMaxId(@Param("id")Integer userId);
 
+	@Query("select i.albumName from Images i where  i.userId = :id  group by i.albumName ")
+	List<String> getAlbumNames(@Param("id")Integer userId);
+
 
 	
 }

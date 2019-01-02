@@ -171,4 +171,11 @@ public class StorageService {
 			return statusDao.getStatus(userId);
 		}
 
+
+
+		public List<String> getAllAlbumNames(Integer userId) {
+
+			return profiledao.getAlbumNames(userId);
+		}
+
 }
