@@ -20,8 +20,6 @@ public interface ISearchDao extends JpaRepository<Groups,Integer> {
 	@Query("select g.groupName from Groups g where g.groupName like :letter%")
 	public List<String> getGroupNames(@Param("letter") String letter) ;
 	
-	/*@Query("select groupName from Groups")
-	public List<String> getAllGroupNames();*/
 	
 	
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface IStatusDao extends JpaRepository<Status, Integer> {
 	
 
-	@Query(value="select * from status s where s.user_id = :userId", nativeQuery=true)
+	@Query(value="select * from status s where s.user_id = :userId order by status_id desc", nativeQuery=true)
 	List<Status> getStatus(@Param("userId") Integer userId);
 
 	@Query(value="select image_url from status s where s.userId = :userId", nativeQuery=true)

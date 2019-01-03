@@ -1,9 +1,13 @@
 package org.flp.capbook.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.flp.capbook.dao.IAddressdao;
+import org.flp.capbook.dao.IUserDao;
+import org.flp.capbook.dao.IUserProfileDao;
 import org.flp.capbook.model.Address;
+import org.flp.capbook.model.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +16,15 @@ public class AddressServiceImpl implements IAddressService {
 
 	@Autowired
 	private IAddressdao addressDao;
+     
+	@Autowired
+	private IUserDao userDao;
+	
+	@Autowired
+	private IUserProfileDao userProfileDao;
 
-
+	UserProfile up=new UserProfile();
+	
 	@Override
 	public List<Address> saveDetails(Address addr,Integer userid)  {
 		
@@ -47,4 +58,15 @@ public class AddressServiceImpl implements IAddressService {
 		return addressDao.findAll();
 	}
 
-}
+	@Override
+	public List<UserProfile> update(Integer userid, Date dob, Long mobile, Boolean visibility) {
+		
+	UserProfile up= userProfileDao.findByUserId(userid);
+	up.setDob(dob);
+	up.setMobileNo(mobile);
+	up.setVisibility(visibility);
+	userDao.save(up);
+		return  userDao.findAll();
+	}
+
+} 

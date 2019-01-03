@@ -1,8 +1,10 @@
 package org.flp.capbook.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.flp.capbook.model.Address;
+import org.flp.capbook.model.UserProfile;
 
 
 
@@ -12,7 +14,9 @@ public interface IAddressService {
 
 	public List<Address> getAllDetails();
 	
-//	public Integer saveUserId(@PathParam("user") Integer userId);
+	public List<UserProfile> update(Integer userid, Date dob, Long mobile, Boolean visibility);
+
+
 	
 	
-}
+} 

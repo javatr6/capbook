@@ -15,6 +15,7 @@ import org.flp.capbook.service.IEmailService;
 import org.flp.capbook.service.IFriendRequestService;
 import org.flp.capbook.service.ILoginService;
 import org.flp.capbook.service.IMessageService;
+import org.flp.capbook.service.IReferService;
 import org.flp.capbook.service.IUserService;
 import org.flp.capbook.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,9 @@ public class UserController {
 	
 	@Autowired
 	private IEmailService emailService;
+	
+	@Autowired
+	private IReferService ReferService;
 	
 	
 	@GetMapping("/login/{email}/{password}")
@@ -220,5 +224,16 @@ public class UserController {
 	} 
 	
 	
+	
+	@GetMapping("/request/{userId}")
+	private ResponseEntity<List<String>> getFriendrequest1(@PathVariable("userId") Integer userId){
+		List<String> request=ReferService.getAllFriendRequest1(userId);
+		System.out.println(request);
+		
+		return new ResponseEntity<List<String>>(request, HttpStatus.OK);
+	}	
+} 
+	
+	
 
-}
+

@@ -38,8 +38,8 @@ public class FriendRequestController {
 	@PutMapping("/request/{request}/{userId}")
 	public ResponseEntity<List<Friend_request>>updateStatus(@PathVariable("request") String request,@PathVariable("userId")Integer userId){
 
-		String status=request.substring(request.length()-6, request.length());
 		String uName=request.substring(0,request.length()-6);
+		String status=request.substring(request.length()-6, request.length());
 		
 		List<Friend_request>users=requestService.updateStatus(uName,status,userId);
 		if(users.isEmpty())

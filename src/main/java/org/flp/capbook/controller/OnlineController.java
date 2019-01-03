@@ -3,6 +3,7 @@ package org.flp.capbook.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.flp.capbook.model.UserProfile;
 import org.flp.capbook.service.OnlineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,11 +22,13 @@ public class OnlineController {
 	
 	@Autowired
 	private OnlineService onlineService;
-	
-	
-	
-	@GetMapping("/request/{userId}")
-	public ResponseEntity<List<String>> getAllUser(@PathVariable("userId") Integer userId){
+	/**
+	 * returns all the friends of the user who are online at that point of time
+	 * @param userId
+	 * @return List<String> of userNames
+	 */
+	@GetMapping("/online/{userId}")
+	public ResponseEntity<List<UserProfile>> getAllUser(@PathVariable("userId") Integer userId){
 		
 		List<Integer> request=onlineService.getAllUserMails1(userId);
 		
@@ -37,10 +40,10 @@ public class OnlineController {
 			request.add(user);
 		}
 		
-		List<String> userNames=onlineService.getAllUserNames(request);
+		List<UserProfile> userNames=onlineService.getAllUserNames(request);
 		System.out.println(userNames);
 		
-		return new ResponseEntity<List<String>>(userNames, HttpStatus.OK);
+		return new ResponseEntity<List<UserProfile>>(userNames, HttpStatus.OK);
 		//return null;
 	}
 	

@@ -17,6 +17,7 @@ public interface IUserDao extends JpaRepository<UserProfile, Integer>{
 	@Query("from UserProfile u where u.email= :email")
 	UserProfile searchUser(@Param("email") String email);
 
+	
 	@Query("from UserProfile u where u.userName=:uName")
 	UserProfile findByName(@Param("uName")String uName);
 
@@ -25,6 +26,10 @@ public interface IUserDao extends JpaRepository<UserProfile, Integer>{
 
 	@Query("select u.email from UserProfile u where u.userId in :id")
 	List<String> getEmail(@Param("id")List<Integer> ids);
+	
+	@Query("from UserProfile u where u.userId in (:ids) ")
+	public List<UserProfile> getAllUserNames(@Param("ids")List<Integer> userIds); 
+ 
 	
 	@Query("From UserProfile u where u.userName =:input")
 	public List<UserProfile> searchFriend(@Param ("input") String input);
